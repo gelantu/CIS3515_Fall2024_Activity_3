@@ -1,29 +1,28 @@
 package edu.temple.inclassuiacvitivity
 
 import android.content.Context
-import android.provider.CalendarContract.Colors
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import android.graphics.Color
 
 
-
-class TextSizeAdapter (_context: Context, _colors: Array<String>) : BaseAdapter() {
+class TextSizeAdapter (private val _context: Context, private val _numbers: Array<Int>) : BaseAdapter() {
 
     private val context = _context
-    private val colors = _colors
+    private val numbers = _numbers
+
+
     override fun getCount(): Int {
-        return colors.size
+        return numbers.size
     }
 
     override fun getItem(position: Int): Any {
-        TODO("Not yet implemented")
+        return numbers[position]
     }
 
     override fun getItemId(position: Int): Long {
-        TODO("Not yet implemented")
+        return numbers[position].toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -35,8 +34,6 @@ class TextSizeAdapter (_context: Context, _colors: Array<String>) : BaseAdapter(
             textView.textSize = 22f
             textView.setPadding(5,10,0,10)
         }
-        textView.text = colors[position]
-        textView.setBackgroundColor(Color.parseColor(colors[position]))
 
         return textView
     }
